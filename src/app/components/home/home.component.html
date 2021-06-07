@@ -1,0 +1,17 @@
+
+
+<div *ngIf="(allUsers$ | async) as users" class="table-yo">
+  <div *ngIf="(currentUser$ | async) as currentUser"> 
+    <h1>Logged in as: {{currentUser.name}}</h1>
+    <table *ngFor="let user of users">
+      <tr>
+        <th>City</th>
+        <th>Name</th>
+      </tr>
+      <tr  [ngClass]="currentUser.name === user.name ? 'me' : ''">
+        <td>{{user.address.city}}</td>
+        <td>{{user.name}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
