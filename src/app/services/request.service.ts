@@ -12,7 +12,6 @@ export class RequestService {
   constructor(private http: HttpClient, private observables: ObservablesService) { }
   
   async getUsers(): Promise<void> {
-    const res: User[] = await this.http.get<User[]>(this.usersURL).toPromise()
-    this.observables.updateUsers(res)
+    this.observables.updateUsers(await this.http.get<User[]>(this.usersURL).toPromise())
   } 
 }

@@ -6,6 +6,7 @@ import { User } from '../types/User';
   providedIn: 'root'
 })
 export class ObservablesService {
+  // Replaysubject for users
   private readonly _users = new ReplaySubject<User[]>(1)
   users$ = this._users.asObservable()
   private set users(val: User[]) {
@@ -15,6 +16,7 @@ export class ObservablesService {
     this.users = val
   }
 
+  // Replaysubject for currentuser
   private readonly _currentUser = new ReplaySubject<User>(1)
   currentUser$ = this._currentUser.asObservable()
   private set currentUser(val: User) {
